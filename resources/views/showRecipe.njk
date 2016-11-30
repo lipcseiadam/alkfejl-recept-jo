@@ -1,0 +1,21 @@
+{% extends 'layout' %}
+
+{% block content %}
+
+<h2>{{ recipe.name }}</h2>
+<p>{{ recipe.category.name }}</p>
+<h3>Hozzávalók</h3>
+<pre>
+{{ recipe.ingredients }}
+</pre>
+<h3>Leírás</h3>
+<pre>
+{{ recipe.instructions }}
+</pre>
+
+{% if currentUser.id == recipe.user_id %}
+<a class="btn btn-primary" href="/recipes/{{recipe.id}}/edit" role="button">Szerkeszt</a>
+<a class="btn btn-danger" href="/recipes/{{recipe.id}}/delete" role="button">Töröl</a>
+{% endif %}
+
+{% endblock %}
